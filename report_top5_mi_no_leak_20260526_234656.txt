@@ -1,0 +1,309 @@
+==========================================================================================
+BAO CAO TOP 5 CAU HINH MOI THUAT TOAN - MI TOP 5 TRAIN-ONLY
+Ngay chay: 2026-05-26 23:52:47
+Chien luoc MI: tinh chi tren train goc truoc SMOTE de tranh leakage
+Chien luoc nguong: Extreme Recall (target Recall >= 83% tren Validation)
+==========================================================================================
+
+OUTPUT:
+  - scores: mi_top5_train_only_scores_20260526_234656.csv
+  - train: train_mi_top5_20260526_234656.csv
+  - val: val_mi_top5_20260526_234656.csv
+  - test: test_mi_top5_20260526_234656.csv
+  - text_report: report_top5_mi_no_leak_20260526_234656.txt
+  - md_report: optimal_configs_mi_top5_no_leak_report_20260526_234656.md
+
+FEATURES DUOC CHON:
+  - Hypertension: MI=0.082816
+  - Age: MI=0.069118
+  - Heart_Disease: MI=0.036362
+  - Avg_Glucose: MI=0.028300
+  - Diabetes: MI=0.027725
+
+TAP DU LIEU:
+  - Train (sau SMOTE 0.5): 7374 mau
+  - Validation: 1000 mau
+  - Test: 2000 mau
+  - So features: 5
+  - Features: ['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes']
+
+==========================================================================================
+THUAT TOAN: Logistic Regression
+==========================================================================================
+
+  --- Top 1: LR-C4 ---
+  Sieu tham so: {'C': 10.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Nguong quyet dinh: 0.4480
+  Thoi gian huan luyen: 0.01s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.55%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.19%
+    - F1-Score (Lop 1):  65.43%
+    - AUC-ROC:           84.63%
+
+  --- Top 2: LR-C5 ---
+  Sieu tham so: {'C': 100.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Nguong quyet dinh: 0.4480
+  Thoi gian huan luyen: 0.01s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.55%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.19%
+    - F1-Score (Lop 1):  65.43%
+    - AUC-ROC:           84.63%
+
+  --- Top 3: LR-C2 ---
+  Sieu tham so: {'C': 0.1, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Nguong quyet dinh: 0.4560
+  Thoi gian huan luyen: 0.01s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.21%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.26%
+    - F1-Score (Lop 1):  65.38%
+    - AUC-ROC:           84.57%
+
+  --- Top 4: LR-C3 ---
+  Sieu tham so: {'C': 1.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Nguong quyet dinh: 0.4425
+  Thoi gian huan luyen: 0.02s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.55%  [DAT (>= 80%)]
+    - Precision (Lop 1): 53.59%
+    - F1-Score (Lop 1):  64.99%
+    - AUC-ROC:           84.63%
+
+  --- Top 5: LR-C1 ---
+  Sieu tham so: {'C': 0.01, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Nguong quyet dinh: 0.4660
+  Thoi gian huan luyen: 0.01s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    80.87%  [DAT (>= 80%)]
+    - Precision (Lop 1): 53.03%
+    - F1-Score (Lop 1):  64.05%
+    - AUC-ROC:           83.95%
+
+==========================================================================================
+THUAT TOAN: Random Forest
+==========================================================================================
+
+  --- Top 1: RF-C1 ---
+  Sieu tham so: {'max_depth': 4, 'n_estimators': 50, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.4380
+  Thoi gian huan luyen: 0.13s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    81.38%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.25%
+    - F1-Score (Lop 1):  65.10%
+    - AUC-ROC:           84.12%
+
+  --- Top 2: RF-C5 ---
+  Sieu tham so: {'max_depth': 12, 'n_estimators': 500, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.3240
+  Thoi gian huan luyen: 1.47s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    80.54%  [DAT (>= 80%)]
+    - Precision (Lop 1): 49.03%
+    - F1-Score (Lop 1):  60.95%
+    - AUC-ROC:           80.61%
+
+  --- Top 3: RF-C2 ---
+  Sieu tham so: {'max_depth': 6, 'n_estimators': 100, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.4235
+  Thoi gian huan luyen: 0.28s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    78.69%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 54.28%
+    - F1-Score (Lop 1):  64.25%
+    - AUC-ROC:           83.80%
+
+  --- Top 4: RF-C3 ---
+  Sieu tham so: {'max_depth': 8, 'n_estimators': 200, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.3920
+  Thoi gian huan luyen: 0.51s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    78.86%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 53.05%
+    - F1-Score (Lop 1):  63.43%
+    - AUC-ROC:           82.77%
+
+  --- Top 5: RF-C4 ---
+  Sieu tham so: {'max_depth': 8, 'n_estimators': 300, 'min_samples_split': 10, 'class_weight': 'balanced', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.4045
+  Thoi gian huan luyen: 0.84s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    77.68%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 53.28%
+    - F1-Score (Lop 1):  63.21%
+    - AUC-ROC:           82.90%
+
+==========================================================================================
+THUAT TOAN: XGBoost
+==========================================================================================
+
+  --- Top 1: XGB-C1 ---
+  Sieu tham so: {'max_depth': 3, 'learning_rate': 0.1, 'n_estimators': 100, 'eval_metric': 'logloss', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.2610
+  Thoi gian huan luyen: 0.53s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    81.04%  [DAT (>= 80%)]
+    - Precision (Lop 1): 53.85%
+    - F1-Score (Lop 1):  64.70%
+    - AUC-ROC:           84.11%
+
+  --- Top 2: XGB-C5 ---
+  Sieu tham so: {'max_depth': 10, 'learning_rate': 0.01, 'n_estimators': 500, 'eval_metric': 'logloss', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.2035
+  Thoi gian huan luyen: 1.66s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.38%  [DAT (>= 80%)]
+    - Precision (Lop 1): 47.17%
+    - F1-Score (Lop 1):  59.99%
+    - AUC-ROC:           80.48%
+
+  --- Top 3: XGB-C4 ---
+  Sieu tham so: {'max_depth': 6, 'learning_rate': 0.1, 'n_estimators': 300, 'eval_metric': 'logloss', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.2050
+  Thoi gian huan luyen: 0.48s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    80.70%  [DAT (>= 80%)]
+    - Precision (Lop 1): 47.62%
+    - F1-Score (Lop 1):  59.90%
+    - AUC-ROC:           80.47%
+
+  --- Top 4: XGB-C2 ---
+  Sieu tham so: {'max_depth': 5, 'learning_rate': 0.05, 'n_estimators': 200, 'eval_metric': 'logloss', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.2620
+  Thoi gian huan luyen: 0.28s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    79.19%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 52.68%
+    - F1-Score (Lop 1):  63.27%
+    - AUC-ROC:           82.82%
+
+  --- Top 5: XGB-C3 ---
+  Sieu tham so: {'max_depth': 4, 'learning_rate': 0.1, 'n_estimators': 150, 'eval_metric': 'logloss', 'random_state': 42, 'n_jobs': -1}
+  Nguong quyet dinh: 0.2510
+  Thoi gian huan luyen: 0.18s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    79.36%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 51.75%
+    - F1-Score (Lop 1):  62.65%
+    - AUC-ROC:           83.17%
+
+==========================================================================================
+THUAT TOAN: Decision Tree
+==========================================================================================
+
+  --- Top 1: DT-C3 ---
+  Sieu tham so: {'max_depth': 6, 'min_samples_leaf': 20, 'class_weight': 'balanced', 'random_state': 42}
+  Nguong quyet dinh: 0.4315
+  Thoi gian huan luyen: 0.02s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    80.20%  [DAT (>= 80%)]
+    - Precision (Lop 1): 53.29%
+    - F1-Score (Lop 1):  64.03%
+    - AUC-ROC:           82.68%
+
+  --- Top 2: DT-C2 ---
+  Sieu tham so: {'max_depth': 5, 'min_samples_split': 5, 'class_weight': 'balanced', 'random_state': 42}
+  Nguong quyet dinh: 0.3335
+  Thoi gian huan luyen: 0.02s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    81.71%  [DAT (>= 80%)]
+    - Precision (Lop 1): 50.41%
+    - F1-Score (Lop 1):  62.36%
+    - AUC-ROC:           83.18%
+
+  --- Top 3: DT-C1 ---
+  Sieu tham so: {'max_depth': 3, 'min_samples_split': 2, 'class_weight': 'balanced', 'random_state': 42}
+  Nguong quyet dinh: 0.2880
+  Thoi gian huan luyen: 0.02s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    92.45%  [DAT (>= 80%)]
+    - Precision (Lop 1): 44.65%
+    - F1-Score (Lop 1):  60.22%
+    - AUC-ROC:           82.03%
+
+  --- Top 4: DT-C4 ---
+  Sieu tham so: {'max_depth': 8, 'min_samples_split': 10, 'class_weight': 'balanced', 'random_state': 42}
+  Nguong quyet dinh: 0.3925
+  Thoi gian huan luyen: 0.03s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    77.85%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 52.02%
+    - F1-Score (Lop 1):  62.37%
+    - AUC-ROC:           79.22%
+
+  --- Top 5: DT-C5 ---
+  Sieu tham so: {'max_depth': 12, 'min_samples_split': 20, 'class_weight': 'balanced', 'random_state': 42}
+  Nguong quyet dinh: 0.2860
+  Thoi gian huan luyen: 0.02s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    75.17%  [CHUA DAT (< 80%)]
+    - Precision (Lop 1): 44.53%
+    - F1-Score (Lop 1):  55.93%
+    - AUC-ROC:           73.12%
+
+==========================================================================================
+THUAT TOAN: SVM (RBF)
+==========================================================================================
+
+  --- Top 1: SVM-C3 ---
+  Sieu tham so: {'C': 10.0, 'kernel': 'rbf', 'gamma': 0.01, 'class_weight': 'balanced', 'probability': True, 'random_state': 42, 'cache_size': 1000}
+  Nguong quyet dinh: 0.2640
+  Thoi gian huan luyen: 11.68s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    81.21%  [DAT (>= 80%)]
+    - Precision (Lop 1): 55.38%
+    - F1-Score (Lop 1):  65.85%
+    - AUC-ROC:           84.51%
+
+  --- Top 2: SVM-C2 ---
+  Sieu tham so: {'C': 1.0, 'kernel': 'rbf', 'gamma': 'scale', 'class_weight': 'balanced', 'probability': True, 'random_state': 42, 'cache_size': 1000}
+  Nguong quyet dinh: 0.1560
+  Thoi gian huan luyen: 16.96s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    81.88%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.59%
+    - F1-Score (Lop 1):  65.50%
+    - AUC-ROC:           82.63%
+
+  --- Top 3: SVM-C5 ---
+  Sieu tham so: {'C': 100.0, 'kernel': 'rbf', 'gamma': 0.01, 'class_weight': 'balanced', 'probability': True, 'random_state': 42, 'cache_size': 1000}
+  Nguong quyet dinh: 0.2155
+  Thoi gian huan luyen: 9.60s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    80.54%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.98%
+    - F1-Score (Lop 1):  65.35%
+    - AUC-ROC:           83.98%
+
+  --- Top 4: SVM-C4 ---
+  Sieu tham so: {'C': 10.0, 'kernel': 'rbf', 'gamma': 0.1, 'class_weight': 'balanced', 'probability': True, 'random_state': 42, 'cache_size': 1000}
+  Nguong quyet dinh: 0.1665
+  Thoi gian huan luyen: 10.86s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.55%  [DAT (>= 80%)]
+    - Precision (Lop 1): 54.07%
+    - F1-Score (Lop 1):  65.34%
+    - AUC-ROC:           83.03%
+
+  --- Top 5: SVM-C1 ---
+  Sieu tham so: {'C': 0.1, 'kernel': 'rbf', 'gamma': 'scale', 'class_weight': 'balanced', 'probability': True, 'random_state': 42, 'cache_size': 1000}
+  Nguong quyet dinh: 0.1700
+  Thoi gian huan luyen: 11.80s
+  KET QUA TREN TAP TEST:
+    - Recall (Lop 1):    82.89%  [DAT (>= 80%)]
+    - Precision (Lop 1): 52.16%
+    - F1-Score (Lop 1):  64.03%
+    - AUC-ROC:           83.35%
+
+==========================================================================================
+BANG TONG HOP CAU HINH TOT NHAT MOI THUAT TOAN (Top 1)
+==========================================================================================
+Thuat toan                Config         Recall       Prec         F1        AUC   Nguong
+------------------------------------------------------------------------------------------
+Logistic Regression       LR-C4          82.55%     54.19%     65.43%     84.63%  0.4480
+Random Forest             RF-C1          81.38%     54.25%     65.10%     84.12%  0.4380
+XGBoost                   XGB-C1         81.04%     53.85%     64.70%     84.11%  0.2610
+Decision Tree             DT-C3          80.20%     53.29%     64.03%     82.68%  0.4315
+SVM (RBF)                 SVM-C3         81.21%     55.38%     65.85%     84.51%  0.2640
