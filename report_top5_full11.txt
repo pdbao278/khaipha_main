@@ -1,0 +1,318 @@
+==========================================================================================
+BÁO CÁO CHI TIẾT TOP 5 CẤU HÌNH MỖI THUẬT TOÁN - FULL 11 FEATURES (KHÔNG MI)
+Ngày chạy: 2026-05-26 22:22:31
+==========================================================================================
+
+Tập dữ liệu:
+  - Train (SMOTE): 7374 mẫu
+  - Validation: 1000 mẫu
+  - Test: 2000 mẫu
+  - Số features: 11
+  - Features: ['Age', 'Gender', 'SES', 'Hypertension', 'Heart_Disease', 'BMI', 'Avg_Glucose', 'Diabetes', 'Smoking_Status_Current', 'Smoking_Status_Former', 'Smoking_Status_Never']
+
+==========================================================================================
+THUẬT TOÁN: Logistic Regression
+==========================================================================================
+
+  --- Top 1: LR-C1 ---
+  Siêu tham số: {'C': 0.01, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1000
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    99.50%  [✓ ĐẠT]
+    - Precision (Lớp 1): 32.74%
+    - F1-Score (Lớp 1):  49.27%
+    - AUC-ROC:           84.39%
+
+  --- Top 2: LR-C4 ---
+  Siêu tham số: {'C': 10.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1116
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.64%
+    - F1-Score (Lớp 1):  54.44%
+    - AUC-ROC:           85.07%
+
+  --- Top 3: LR-C5 ---
+  Siêu tham số: {'C': 100.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1109
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.61%
+    - F1-Score (Lớp 1):  54.41%
+    - AUC-ROC:           85.08%
+
+  --- Top 4: LR-C3 ---
+  Siêu tham số: {'C': 1.0, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1111
+  Thời gian huấn luyện: 0.01s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.37%
+    - F1-Score (Lớp 1):  54.16%
+    - AUC-ROC:           85.06%
+
+  --- Top 5: LR-C2 ---
+  Siêu tham số: {'C': 0.1, 'penalty': 'l2', 'class_weight': 'balanced', 'solver': 'lbfgs', 'max_iter': 1000, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1357
+  Thời gian huấn luyện: 0.01s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.15%  [✓ ĐẠT]
+    - Precision (Lớp 1): 38.29%
+    - F1-Score (Lớp 1):  55.08%
+    - AUC-ROC:           85.02%
+
+==========================================================================================
+THUẬT TOÁN: SVM (RBF Kernel)
+==========================================================================================
+
+  --- Top 1: SVM-C4 ---
+  Siêu tham số: {'C': 10.0, 'kernel': 'rbf', 'gamma': 0.1, 'class_weight': 'balanced', 'probability': True, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0744
+  Thời gian huấn luyện: 10.24s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.83%  [✓ ĐẠT]
+    - Precision (Lớp 1): 31.51%
+    - F1-Score (Lớp 1):  47.79%
+    - AUC-ROC:           83.65%
+
+  --- Top 2: SVM-C5 ---
+  Siêu tham số: {'C': 100.0, 'kernel': 'rbf', 'gamma': 0.01, 'class_weight': 'balanced', 'probability': True, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0907
+  Thời gian huấn luyện: 7.97s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.65%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.02%
+    - F1-Score (Lớp 1):  53.69%
+    - AUC-ROC:           84.64%
+
+  --- Top 3: SVM-C3 ---
+  Siêu tham số: {'C': 10.0, 'kernel': 'rbf', 'gamma': 0.01, 'class_weight': 'balanced', 'probability': True, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0893
+  Thời gian huấn luyện: 6.31s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.48%  [✓ ĐẠT]
+    - Precision (Lớp 1): 39.58%
+    - F1-Score (Lớp 1):  56.30%
+    - AUC-ROC:           85.09%
+
+  --- Top 4: SVM-C1 ---
+  Siêu tham số: {'C': 0.1, 'kernel': 'rbf', 'gamma': 'scale', 'class_weight': 'balanced', 'probability': True, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0851
+  Thời gian huấn luyện: 15.32s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 39.43%
+    - F1-Score (Lớp 1):  56.12%
+    - AUC-ROC:           84.19%
+
+  --- Top 5: SVM-C2 ---
+  Siêu tham số: {'C': 1.0, 'kernel': 'rbf', 'gamma': 'scale', 'class_weight': 'balanced', 'probability': True, 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1104
+  Thời gian huấn luyện: 7.20s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    95.47%  [✓ ĐẠT]
+    - Precision (Lớp 1): 39.30%
+    - F1-Score (Lớp 1):  55.68%
+    - AUC-ROC:           84.00%
+
+==========================================================================================
+THUẬT TOÁN: Random Forest
+==========================================================================================
+
+  --- Top 1: RF-C2 ---
+  Siêu tham số: {'max_depth': 6, 'n_estimators': 100, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1289
+  Thời gian huấn luyện: 0.56s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.66%  [✓ ĐẠT]
+    - Precision (Lớp 1): 35.53%
+    - F1-Score (Lớp 1):  52.24%
+    - AUC-ROC:           84.71%
+
+  --- Top 2: RF-C5 ---
+  Siêu tham số: {'max_depth': 12, 'n_estimators': 500, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0573
+  Thời gian huấn luyện: 4.83s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.49%  [✓ ĐẠT]
+    - Precision (Lớp 1): 34.67%
+    - F1-Score (Lớp 1):  51.29%
+    - AUC-ROC:           83.63%
+
+  --- Top 3: RF-C3 ---
+  Siêu tham số: {'max_depth': 8, 'n_estimators': 200, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1142
+  Thời gian huấn luyện: 0.91s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 36.31%
+    - F1-Score (Lớp 1):  53.03%
+    - AUC-ROC:           84.50%
+
+  --- Top 4: RF-C4 ---
+  Siêu tham số: {'max_depth': 8, 'n_estimators': 300, 'min_samples_split': 10, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.1275
+  Thời gian huấn luyện: 2.59s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.99%  [✓ ĐẠT]
+    - Precision (Lớp 1): 36.92%
+    - F1-Score (Lớp 1):  53.63%
+    - AUC-ROC:           84.51%
+
+  --- Top 5: RF-C1 ---
+  Siêu tham số: {'max_depth': 4, 'n_estimators': 50, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.2227
+  Thời gian huấn luyện: 0.29s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.48%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.97%
+    - F1-Score (Lớp 1):  54.66%
+    - AUC-ROC:           84.31%
+
+==========================================================================================
+THUẬT TOÁN: XGBoost
+==========================================================================================
+
+  --- Top 1: XGB-C1 ---
+  Siêu tham số: {'max_depth': 3, 'learning_rate': 0.1, 'n_estimators': 100, 'use_label_encoder': False, 'eval_metric': 'logloss', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0618
+  Thời gian huấn luyện: 0.45s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.15%  [✓ ĐẠT]
+    - Precision (Lớp 1): 35.80%
+    - F1-Score (Lớp 1):  52.47%
+    - AUC-ROC:           84.85%
+
+  --- Top 2: XGB-C2 ---
+  Siêu tham số: {'max_depth': 5, 'learning_rate': 0.05, 'n_estimators': 200, 'use_label_encoder': False, 'eval_metric': 'logloss', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0637
+  Thời gian huấn luyện: 0.18s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.15%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.62%
+    - F1-Score (Lớp 1):  54.24%
+    - AUC-ROC:           83.52%
+
+  --- Top 3: XGB-C3 ---
+  Siêu tham số: {'max_depth': 4, 'learning_rate': 0.1, 'n_estimators': 150, 'use_label_encoder': False, 'eval_metric': 'logloss', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0608
+  Thời gian huấn luyện: 0.09s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    96.98%  [✓ ĐẠT]
+    - Precision (Lớp 1): 36.63%
+    - F1-Score (Lớp 1):  53.17%
+    - AUC-ROC:           83.55%
+
+  --- Top 4: XGB-C5 ---
+  Siêu tham số: {'max_depth': 10, 'learning_rate': 0.01, 'n_estimators': 500, 'use_label_encoder': False, 'eval_metric': 'logloss', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0512
+  Thời gian huấn luyện: 3.12s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    96.64%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.72%
+    - F1-Score (Lớp 1):  54.26%
+    - AUC-ROC:           82.26%
+
+  --- Top 5: XGB-C4 ---
+  Siêu tham số: {'max_depth': 6, 'learning_rate': 0.1, 'n_estimators': 300, 'use_label_encoder': False, 'eval_metric': 'logloss', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0522
+  Thời gian huấn luyện: 0.36s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    94.63%  [✓ ĐẠT]
+    - Precision (Lớp 1): 38.68%
+    - F1-Score (Lớp 1):  54.92%
+    - AUC-ROC:           81.36%
+
+==========================================================================================
+THUẬT TOÁN: Decision Tree
+==========================================================================================
+
+  --- Top 1: DT-C1 ---
+  Siêu tham số: {'max_depth': 3, 'min_samples_split': 2, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0500
+  Thời gian huấn luyện: 0.01s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    100.00%  [✓ ĐẠT]
+    - Precision (Lớp 1): 29.80%
+    - F1-Score (Lớp 1):  45.92%
+    - AUC-ROC:           82.03%
+
+  --- Top 2: DT-C3 ---
+  Siêu tham số: {'max_depth': 6, 'min_samples_leaf': 20, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0670
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    98.32%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.23%
+    - F1-Score (Lớp 1):  54.01%
+    - AUC-ROC:           83.51%
+
+  --- Top 3: DT-C2 ---
+  Siêu tham số: {'max_depth': 5, 'min_samples_split': 5, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0777
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    97.48%  [✓ ĐẠT]
+    - Precision (Lớp 1): 37.90%
+    - F1-Score (Lớp 1):  54.58%
+    - AUC-ROC:           82.85%
+
+  --- Top 4: DT-C4 ---
+  Siêu tham số: {'max_depth': 8, 'min_samples_split': 10, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0501
+  Thời gian huấn luyện: 0.02s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    92.95%  [✓ ĐẠT]
+    - Precision (Lớp 1): 33.76%
+    - F1-Score (Lớp 1):  49.53%
+    - AUC-ROC:           79.85%
+
+  --- Top 5: DT-C5 ---
+  Siêu tham số: {'max_depth': 12, 'min_samples_split': 20, 'class_weight': 'balanced', 'random_state': 42}
+  Chiến lược: Max Recall
+  Ngưỡng quyết định: 0.0500
+  Thời gian huấn luyện: 0.03s
+  Kết quả trên Test:
+    - Recall (Lớp 1):    86.91%  [✓ ĐẠT]
+    - Precision (Lớp 1): 38.17%
+    - F1-Score (Lớp 1):  53.05%
+    - AUC-ROC:           76.69%
+
+
+==========================================================================================
+BẢNG TỔNG HỢP CẤU HÌNH TỐT NHẤT MỖI THUẬT TOÁN (Top 1)
+==========================================================================================
+Thuật toán                Cấu hình       Recall  Precision         F1        AUC   Ngưỡng
+------------------------------------------------------------------------------------------
+Logistic Regression       LR-C1          99.50%     32.74%     49.27%     84.39%  0.1000
+SVM (RBF Kernel)          SVM-C4         98.83%     31.51%     47.79%     83.65%  0.0744
+Random Forest             RF-C2          98.66%     35.53%     52.24%     84.71%  0.1289
+XGBoost                   XGB-C1         98.15%     35.80%     52.47%     84.85%  0.0618
+Decision Tree             DT-C1         100.00%     29.80%     45.92%     82.03%  0.0500
