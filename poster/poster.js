@@ -113,7 +113,7 @@ function createAlgorithmChart() {
             datasets: [
                 {
                     label: 'Recall (%)',
-                    data: [81.04, 85.57, 84.06, 83.05, 82.38],
+                    data: [82.55, 86.07, 79.03, 82.55, 81.21],
                     backgroundColor: 'rgba(0, 121, 107, 0.8)',
                     borderColor: '#00796b',
                     borderWidth: 1,
@@ -123,7 +123,7 @@ function createAlgorithmChart() {
                 },
                 {
                     label: 'Precision (%)',
-                    data: [54.15, 49.85, 50.86, 50.67, 50.62],
+                    data: [53.95, 49.85, 52.74, 49.85, 51.54],
                     backgroundColor: 'rgba(231, 76, 60, 0.75)',
                     borderColor: '#e74c3c',
                     borderWidth: 1,
@@ -133,7 +133,7 @@ function createAlgorithmChart() {
                 },
                 {
                     label: 'F1-Score (%)',
-                    data: [64.92, 63.00, 63.38, 62.94, 61.71],
+                    data: [65.25, 63.14, 63.26, 62.16, 63.06],
                     backgroundColor: 'rgba(243, 156, 18, 0.8)',
                     borderColor: '#f39c12',
                     borderWidth: 1,
@@ -143,7 +143,7 @@ function createAlgorithmChart() {
                 },
                 {
                     label: 'AUC-ROC (%)',
-                    data: [85.07, 84.64, 84.50, 83.55, 83.51],
+                    data: [84.63, 83.98, 82.77, 83.17, 82.68],
                     backgroundColor: 'rgba(142, 68, 173, 0.8)',
                     borderColor: '#8e44ad',
                     borderWidth: 1,
@@ -165,7 +165,7 @@ function createAlgorithmChart() {
             plugins: {
                 title: {
                     display: false,
-                    text: 'So sánh Hiệu năng 5 Thuật toán trên Test Set (Full 11 Features)',
+                    text: 'So sánh Hiệu năng 5 Thuật toán trên Test Set (Bộ 5 đặc trưng MI - Ngưỡng cố định)',
                     font: { size: 13, weight: 'bold', family: 'Inter' },
                     color: '#1a237e',
                     padding: { bottom: 10 }

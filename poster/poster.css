@@ -337,38 +337,89 @@ body {
 /* ============================================
    PIPELINE FLOWCHART
    ============================================ */
+/* ============================================
+   PIPELINE FLOWCHART
+   ============================================ */
 .pipeline-flow {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0;
-    margin: 10px 0;
+    gap: 12px;
+    margin: 15px 0 10px 10px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.pipeline-flow::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal-light), var(--primary));
+    opacity: 0.6;
+}
+
+.pipeline-arrow {
+    display: none !important; /* Hide the raw text arrows completely for a cleaner, modern line design */
 }
 
 .pipeline-step {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
     width: 100%;
-    padding: 8px 12px;
-    border-radius: var(--radius);
-    border-left: 4px solid;
-    background: white;
-    box-shadow: var(--shadow);
+    padding: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    position: relative;
 }
 
-.step-1 { border-left-color: #3498db; background: #ebf5fb; }
-.step-2 { border-left-color: #9b59b6; background: #f4ecf7; }
-.step-3 { border-left-color: #e67e22; background: #fef5e7; }
-.step-4 { border-left-color: #1abc9c; background: #e8f8f5; }
-.step-5 { border-left-color: #e74c3c; background: #fdedec; }
-.step-6 { border-left-color: #2ecc71; background: #eafaf1; }
-.step-7 { border-left-color: var(--primary); background: #eef1ff; }
+/* Timeline bullet point on the vertical line */
+.pipeline-step::before {
+    content: '';
+    position: absolute;
+    left: -19px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--teal);
+    z-index: 2;
+    transition: all 0.2s ease-in-out;
+}
+
+.pipeline-step:hover::before {
+    background: var(--teal);
+    transform: scale(1.3);
+}
 
 .step-icon {
-    font-size: 1.6rem;
+    font-size: 1.25rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    margin-top: 1px;
+    background: rgba(38, 166, 154, 0.12) !important;
+    color: var(--teal) !important;
+    border: 1px solid rgba(38, 166, 154, 0.25);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
+
+/* Custom coloring per step (subtle left-border is removed, we use unified sleek layout) */
+.pipeline-step.step-1 .step-icon { background: rgba(52, 152, 219, 0.1) !important; color: #3498db !important; border-color: rgba(52, 152, 219, 0.25); }
+.pipeline-step.step-2 .step-icon { background: rgba(155, 89, 182, 0.1) !important; color: #9b59b6 !important; border-color: rgba(155, 89, 182, 0.25); }
+.pipeline-step.step-3 .step-icon { background: rgba(230, 126, 34, 0.1) !important; color: #e67e22 !important; border-color: rgba(230, 126, 34, 0.25); }
+.pipeline-step.step-4 .step-icon { background: rgba(26, 188, 156, 0.1) !important; color: #1abc9c !important; border-color: rgba(26, 188, 156, 0.25); }
+.pipeline-step.step-5 .step-icon { background: rgba(231, 76, 60, 0.1) !important; color: #e74c3c !important; border-color: rgba(231, 76, 60, 0.25); }
+.pipeline-step.step-6 .step-icon { background: rgba(46, 204, 113, 0.1) !important; color: #2ecc71 !important; border-color: rgba(46, 204, 113, 0.25); }
+.pipeline-step.step-7 .step-icon { background: rgba(26, 35, 126, 0.08) !important; color: var(--primary) !important; border-color: rgba(26, 35, 126, 0.2); }
 
 .step-text {
     display: flex;
@@ -376,19 +427,16 @@ body {
 }
 
 .step-text strong {
-    font-size: 1.1rem;
-    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.3;
 }
 
 .step-text span {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-light);
-}
-
-.pipeline-arrow {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    padding: 2px 0;
+    margin-top: 1px;
 }
 
 /* ============================================
