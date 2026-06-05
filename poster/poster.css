@@ -53,7 +53,7 @@ body {
    ============================================ */
 .poster {
     width: 841mm;  /* A0 width ~ 841mm, but we scale */
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 20px auto;
     background: var(--bg);
     box-shadow: 0 8px 40px rgba(0,0,0,0.15);
@@ -165,18 +165,17 @@ body {
    BODY - TWO COLUMNS
    ============================================ */
 .poster-body {
-    display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 0;
+    display: block;
     padding: 0;
 }
 
 .column {
-    padding: 18px 20px;
+    padding: 18px 18px;
 }
 
-.column-left {
-    border-right: 2px solid var(--border);
+.column-right {
+    padding: 18px 30px;
+    border-right: none;
 }
 
 /* ============================================
@@ -208,34 +207,34 @@ body {
 }
 
 .section-content {
-    font-size: 1.15rem;
-    line-height: 1.55;
+    font-size: 1.05rem;
+    line-height: 1.5;
     color: var(--text);
 }
 
 .section-content p {
-    margin-bottom: 8px;
+    margin-bottom: 7px;
     text-align: justify;
 }
 
 .section-content h3 {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--teal);
-    margin-top: 12px;
-    margin-bottom: 8px;
+    margin-top: 10px;
+    margin-bottom: 7px;
     padding-left: 8px;
     border-left: 3px solid var(--teal);
 }
 
 .section-content ul {
-    padding-left: 20px;
-    margin-bottom: 10px;
+    padding-left: 18px;
+    margin-bottom: 8px;
 }
 
 .section-content ul li {
-    margin-bottom: 4px;
-    font-size: 1.1rem;
+    margin-bottom: 3px;
+    font-size: 1.05rem;
 }
 
 /* Editable sections indicator */
@@ -343,10 +342,10 @@ body {
 .pipeline-flow {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin: 15px 0 10px 10px;
+    gap: 10px;
+    margin: 12px 0 8px 8px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 18px;
 }
 
 .pipeline-flow::before {
@@ -448,12 +447,12 @@ body {
     background: var(--bg-section);
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    height: 295px;
+    height: 450px;
     position: relative;
 }
 
 .chart-mi {
-    height: 250px;
+    height: 280px;
 }
 
 .chart-title {
@@ -529,6 +528,11 @@ body {
 
 .results-table .best-row {
     background: linear-gradient(90deg, #e8f5e9, #c8e6c9) !important;
+}
+
+.highlight-acc {
+    color: var(--blue);
+    font-weight: 700;
 }
 
 .highlight-recall {

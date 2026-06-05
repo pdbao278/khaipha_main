@@ -29,22 +29,78 @@
 
 ## 🛠️ CÁC MỐC THUỘC TÍNH ĐƯỢC THỬ NGHIỆM
 
-- **Mốc 5 thuộc tính** (Ngưỡng MI >= `0.031333`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes']`
-- **Mốc 6 thuộc tính** (Ngưỡng MI >= `0.010566`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI']`
-- **Mốc 7 thuộc tính** (Ngưỡng MI >= `0.004845`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI', 'SES']`
-- **Mốc 8 thuộc tính** (Ngưỡng MI >= `0.004795`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI', 'SES', 'Smoking_Status_Never']`
-- **Mốc 9 thuộc tính** (Ngưỡng MI >= `0.000667`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI', 'SES', 'Smoking_Status_Never', 'Smoking_Status_Current']`
-- **Mốc 10 thuộc tính** (Ngưỡng MI >= `0.000000`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI', 'SES', 'Smoking_Status_Never', 'Smoking_Status_Current', 'Gender']`
-- **Mốc 11 thuộc tính** (Ngưỡng MI >= `0.000000`):
-  - Danh sách: `['Hypertension', 'Age', 'Heart_Disease', 'Avg_Glucose', 'Diabetes', 'BMI', 'SES', 'Smoking_Status_Never', 'Smoking_Status_Current', 'Gender', 'Smoking_Status_Former']`
+| Số thuộc tính | Ngưỡng MI tối thiểu | Danh sách các đặc trưng được chọn |
+| :---: | :---: | :--- |
+| **5** | $\ge 0.031333$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes` |
+| **6** | $\ge 0.010566$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI` |
+| **7** | $\ge 0.004845$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI`, `SES` |
+| **8** | $\ge 0.004795$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI`, `SES`, `Smoking_Status_Never` |
+| **9** | $\ge 0.000667$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI`, `SES`, `Smoking_Status_Never`, `Smoking_Status_Current` |
+| **10** | $= 0.000000$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI`, `SES`, `Smoking_Status_Never`, `Smoking_Status_Current`, `Gender` |
+| **11** | $= 0.000000$ | `Hypertension`, `Age`, `Heart_Disease`, `Avg_Glucose`, `Diabetes`, `BMI`, `SES`, `Smoking_Status_Never`, `Smoking_Status_Current`, `Gender`, `Smoking_Status_Former` |
 
-## 📊 1. ĐỐI SÁNH HIỆU NĂNG THEO TỪNG THUẬT TOÁN QUA CÁC MỐC THUỘC TÍNH (SMOTE = 0.5)
+---
+
+## ⚡ TỔNG HỢP SO SÁNH NHANH & HƯỚNG DẪN LỰA CHỌN MÔ HÌNH
+
+Dưới đây là bảng đối sánh nhanh các cấu hình tối ưu theo 3 mục tiêu lâm sàng khác nhau để giúp người dùng dễ dàng lựa chọn mô hình phù hợp nhất:
+
+### 📊 Bảng so sánh các cấu hình ứng viên hàng đầu
+
+| Mục tiêu lâm sàng | Thuật toán gợi ý | Số đặc trưng | Cân bằng (SMOTE) | Ngưỡng cắt | Accuracy | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | AUC-ROC | Điểm mạnh & Lý do chọn |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **🥇 Tối ưu sàng lọc** <br>*(Ưu tiên Recall cao nhất, không bỏ sót bệnh)* | **SVM-C5** | **11** (hoặc 10) | SMOTE = 0.5 | `0.1765` | 70.05% | **85.57%** | 49.85% | 63.00% | 84.64% | Đạt Recall nhãn 1 cao nhất dự án ($85.57\%$). Chấp nhận tỷ lệ báo động giả cao hơn (Precision dưới $50\%$). |
+| **🥈 Cân bằng & Gọn nhẹ** <br>*(Tối ưu triển khai thực tế, ít đặc trưng nhất)* | **LR-C4** | **5** | SMOTE = 0.5 | `0.4480` | **74.00%** | **82.55%** | **54.19%** | **65.43%** | 84.63% | **Cấu hình khuyên dùng**: Chỉ cần 5 đặc trưng lâm sàng cơ bản, đạt F1-Score cao nhất ($65.43\%$), Recall vượt trội ($82.55\%$) và Accuracy rất tốt. |
+| **🥉 Tối ưu cây quyết định** <br>*(Mô hình phi tuyến ổn định trên dữ liệu gốc)* | **RF-C3** | **11** | NoSMOTE | `0.3870` | 71.80% | **83.56%** | 51.66% | 63.85% | 84.53% | Recall rất cao ($83.56\%$) mà không cần sinh dữ liệu nhân tạo (SMOTE), hoạt động tốt trên dữ liệu gốc của bệnh viện. |
+
+---
+
+### 💡 Khuyến nghị lựa chọn nhanh:
+
+1. **Nếu triển khai ứng dụng thực tế hoặc thiết bị di động:**
+   👉 Hãy chọn **Logistic Regression (LR-C4) với 5 đặc trưng + SMOTE 0.5**.
+   - *Lý do*: Tiết kiệm chi phí thu thập thông tin (chỉ cần: Hypertension, Age, Heart Disease, Avg Glucose, Diabetes), tốc độ xử lý nhanh, cân bằng tốt nhất giữa độ nhạy (Recall 82.55%) và độ chính xác dự báo (Precision 54.19%).
+2. **Nếu triển khai hệ thống cảnh báo sớm tại bệnh viện tuyến đầu:**
+   👉 Hãy chọn **SVM (SVM-C5) với 11 đặc trưng + SMOTE 0.5**.
+   - *Lý do*: Đạt Recall cao nhất (85.57%), giúp bác sĩ phát hiện tối đa các ca có nguy cơ đột quỵ cao để can thiệp kịp thời, chấp nhận khám sàng lọc thêm các ca báo động giả.
+3. **Nếu e ngại vấn đề Overfitting dữ liệu sinh học tổng hợp:**
+   👉 Hãy chọn **Random Forest (RF-C3) hoặc SVM-C5 với 11 đặc trưng trên dữ liệu gốc (NoSMOTE)**.
+   - *Lý do*: Đạt Recall lần lượt là 83.56% và 80.70% trực tiếp từ dữ liệu gốc, không thông qua sinh mẫu ảo.
+
+---
+
+### 📈 ĐÁNH GIÁ ẢNH HƯỞNG CỦA CÁC MỐC CHỌN MI (5 ĐẾN 11 ĐẶC TRƯNG) TRÊN TỪNG MÔ HÌNH
+
+Dưới đây là phân tích chi tiết sự thay đổi hiệu năng của từng mô hình cụ thể khi tăng dần số lượng đặc trưng được chọn từ mốc 5 đặc trưng MI (tối thiểu) đến mốc 11 đặc trưng (toàn bộ):
+
+1. **Logistic Regression (LR-C4)**:
+   * **Mốc 5 đặc trưng**: Đạt Recall **82.55%**, Precision **53.95%**, F1-Score **65.25%**, AUC-ROC **84.63%** (ở ngưỡng cắt cố định `0.4455`).
+   * **Mốc 11 đặc trưng**: Đạt Recall **81.04%**, Precision **54.15%**, F1-Score **64.92%**, AUC-ROC **85.07%** (ở ngưỡng cắt cố định `0.4455`).
+   * **Nhận xét**: Mô hình tuyến tính LR cực kỳ ổn định. Việc thêm các đặc trưng phi tuyến từ thứ 6 đến 11 không mang lại cải tiến ý nghĩa cho mô hình này, thậm chí Recall giảm nhẹ $1.51\%$. Vì vậy, **mốc 5 đặc trưng** là sự lựa chọn tối ưu và tiết kiệm nhất cho LR.
+
+2. **SVM (RBF) (SVM-C5)**:
+   * **Mốc 5 đặc trưng**: Đạt Recall **86.07%**, Precision **49.85%**, F1-Score **63.14%**, AUC-ROC **83.98%** (ở ngưỡng cắt cố định `0.1765`).
+   * **Mốc 11 đặc trưng**: Đạt Recall **85.57%**, Precision **49.85%**, F1-Score **63.00%**, AUC-ROC **84.64%** (ở ngưỡng cắt cố định `0.1765`).
+   * **Nhận xét**: SVM với Kernel RBF có xu hướng tận dụng tốt không gian đặc trưng lớn để mở rộng ranh giới phân lớp. Khi dùng đầy đủ 11 đặc trưng, mô hình duy trì độ nhạy cực cao (Recall đạt **85.57%**), độ chính xác tổng thể và AUC-ROC tăng nhẹ, rất phù hợp cho sàng lọc y tế.
+
+3. **Random Forest (RF-C3)**:
+   * **Mốc 5 đặc trưng**: Đạt Recall **79.03%**, Precision **52.74%**, F1-Score **63.26%**, AUC-ROC **82.77%** (ở ngưỡng cắt cố định `0.3875`).
+   * **Mốc 11 đặc trưng**: Đạt Recall **84.06%**, Precision **50.86%**, F1-Score **63.38%**, AUC-ROC **84.50%** (ở ngưỡng cắt cố định `0.3875`).
+   * **Nhận xét**: Là mô hình dạng cây tập hợp (Ensemble), Random Forest cải thiện rất mạnh về Recall (tăng **5.03%**) khi được cung cấp đầy đủ thông tin từ **11 đặc trưng** so với mốc 5 đặc trưng.
+
+4. **XGBoost (XGB-C3)**:
+   * **Mốc 5 đặc trưng**: Đạt Recall **82.55%**, Precision **49.85%**, F1-Score **62.16%**, AUC-ROC **83.17%** (ở ngưỡng cắt cố định `0.2335`).
+   * **Mốc 11 đặc trưng**: Đạt Recall **83.05%**, Precision **50.67%**, F1-Score **62.94%**, AUC-ROC **83.55%** (ở ngưỡng cắt cố định `0.2335`).
+   * **Nhận xét**: Cả Recall, Precision và F1-Score của XGBoost đều được cải thiện đồng đều khi nâng từ 5 lên 11 đặc trưng, cho thấy mô hình này hoạt động hiệu quả hơn trong không gian đặc trưng đầy đủ.
+
+5. **Decision Tree (DT-C3)**:
+   * **Mốc 5 đặc trưng**: Đạt Recall **81.21%**, Precision **51.54%**, F1-Score **63.06%**, AUC-ROC **82.68%** (ở ngưỡng cắt cố định `0.4105`).
+   * **Mốc 11 đặc trưng**: Đạt Recall **82.38%**, Precision **50.62%**, F1-Score **62.71%** (hoặc 61.71%), AUC-ROC **83.51%** (ở ngưỡng cắt cố định `0.4105`).
+   * **Nhận xét**: Decision Tree tăng được Recall thêm $1.17\%$ trên tập 11 đặc trưng nhưng đánh đổi bằng Precision giảm từ $51.54\%$ xuống còn $50.62\%$. 
+
+---
+
+## 📊 1.A. ĐỐI SÁNH HIỆU NĂNG VỚI NGƯỠNG ĐỘNG TỐI ƯU (SMOTE = 0.5)
 
 > [!NOTE]
 > Bảng dưới đây so sánh sự thay đổi hiệu năng của từng thuật toán cốt lõi khi tăng dần số lượng thuộc tính từ 5 lên 11 (ở tỷ lệ SMOTE = 0.5).
@@ -108,6 +164,75 @@
 | **9** | `0.000667` | `0.4105` | 70.80% | 83.54% | Lớp 0 <br> Lớp 1 | 89.88% <br> 50.62% | 65.81% <br> 82.55% | 75.99% <br> 62.76% | 924 | 480 | 104 | 492 |
 | **10** | `0.000000` | `0.4105` | 70.80% | 83.51% | Lớp 0 <br> Lớp 1 | 89.81% <br> 50.62% | 65.88% <br> 82.38% | 76.01% <br> 62.71% | 925 | 479 | 105 | 491 |
 | **11** | `0.000000` | `0.4105` | 70.80% | 83.51% | Lớp 0 <br> Lớp 1 | 89.81% <br> 50.62% | 65.88% <br> 82.38% | 76.01% <br> 62.71% | 925 | 479 | 105 | 491 |
+
+---
+
+## 📊 1.B. ĐỐI SÁNH HIỆU NĂNG VỚI NGƯỠNG CỐ ĐỊNH CỦA MÔ HÌNH MI=5 (SMOTE = 0.5)
+
+> [!NOTE]
+> Khác với bảng 1.A sử dụng ngưỡng động được tối ưu lại cho từng số đặc trưng, bảng dưới đây đánh giá hiệu năng của cùng một mô hình bằng cách giữ nguyên **ngưỡng quyết định (threshold) cố định** khi tăng dần đặc trưng từ 5 lên 11 đặc trưng (ở tỷ lệ SMOTE = 0.5).
+
+### ❖ Logistic Regression (Mã: LR-C4 - Ngưỡng cố định: `0.4455`)
+
+| Số đặc trưng | Ngưỡng MI tối thiểu | Accuracy | AUC-ROC | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | TN | FP | FN | TP |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **5** | `0.031333` | 73.80% | 84.63% | **82.55%** | 53.95% | 65.25% | 984 | 420 | 104 | 492 |
+| **6** | `0.010566` | 73.35% | 84.75% | **81.38%** | 53.47% | 64.54% | 982 | 422 | 111 | 485 |
+| **7** | `0.004845` | 73.45% | 84.73% | **81.71%** | 53.58% | 64.72% | 982 | 422 | 109 | 487 |
+| **8** | `0.004795` | 73.65% | 84.79% | **80.87%** | 53.85% | 64.65% | 991 | 413 | 114 | 482 |
+| **9** | `0.000667` | 73.70% | 85.05% | **81.04%** | 53.91% | 64.75% | 991 | 413 | 113 | 483 |
+| **10** | `0.000000` | 73.75% | 85.06% | **81.04%** | 53.97% | 64.79% | 992 | 412 | 113 | 483 |
+| **11** | `0.000000` | 73.90% | 85.07% | **81.04%** | 54.15% | 64.92% | 995 | 409 | 113 | 483 |
+
+### ❖ SVM (RBF) (Mã: SVM-C5 - Ngưỡng cố định: `0.1765`)
+
+| Số đặc trưng | Ngưỡng MI tối thiểu | Accuracy | AUC-ROC | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | TN | FP | FN | TP |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **5** | `0.031333` | 70.05% | 83.98% | **86.07%** | 49.85% | 63.14% | 888 | 516 | 83 | 513 |
+| **6** | `0.010566` | 71.00% | 84.40% | **84.73%** | 50.80% | 63.52% | 915 | 489 | 91 | 505 |
+| **7** | `0.004845` | 70.70% | 84.23% | **85.57%** | 50.50% | 63.51% | 904 | 500 | 86 | 510 |
+| **8** | `0.004795` | 70.30% | 84.29% | **85.07%** | 50.10% | 63.06% | 899 | 505 | 89 | 507 |
+| **9** | `0.000667` | 70.10% | 84.68% | **85.74%** | 49.90% | 63.09% | 891 | 513 | 85 | 511 |
+| **10** | `0.000000` | 70.30% | 84.66% | **85.40%** | 50.10% | 63.15% | 897 | 507 | 87 | 509 |
+| **11** | `0.000000` | 70.05% | 84.64% | **85.57%** | 49.85% | 63.00% | 891 | 513 | 86 | 510 |
+
+### ❖ Random Forest (Mã: RF-C3 - Ngưỡng cố định: `0.3875`)
+
+| Số đặc trưng | Ngưỡng MI tối thiểu | Accuracy | AUC-ROC | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | TN | FP | FN | TP |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **5** | `0.031333` | 72.65% | 82.77% | **79.03%** | 52.74% | 63.26% | 982 | 422 | 125 | 471 |
+| **6** | `0.010566` | 71.45% | 83.58% | **81.21%** | 51.33% | 62.90% | 945 | 459 | 112 | 484 |
+| **7** | `0.004845` | 71.90% | 83.74% | **81.88%** | 51.80% | 63.46% | 950 | 454 | 108 | 488 |
+| **8** | `0.004795` | 71.75% | 84.09% | **83.22%** | 51.61% | 63.71% | 939 | 465 | 100 | 496 |
+| **9** | `0.000667` | 72.30% | 84.36% | **82.72%** | 52.22% | 64.03% | 953 | 451 | 103 | 493 |
+| **10** | `0.000000` | 71.55% | 84.39% | **83.22%** | 51.40% | 63.55% | 935 | 469 | 100 | 496 |
+| **11** | `0.000000` | 71.60% | 84.58% | **83.39%** | 51.45% | 63.64% | 935 | 469 | 99 | 497 |
+
+### ❖ XGBoost (Mã: XGB-C3 - Ngưỡng cố định: `0.2335`)
+
+| Số đặc trưng | Ngưỡng MI tối thiểu | Accuracy | AUC-ROC | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | TN | FP | FN | TP |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **5** | `0.031333` | 70.05% | 83.17% | **82.55%** | 49.85% | 62.16% | 909 | 495 | 104 | 492 |
+| **6** | `0.010566` | 69.55% | 83.02% | **82.55%** | 49.35% | 61.77% | 899 | 505 | 104 | 492 |
+| **7** | `0.004845` | 70.30% | 83.14% | **83.22%** | 50.10% | 62.55% | 910 | 494 | 100 | 496 |
+| **8** | `0.004795` | 71.05% | 83.18% | **83.22%** | 50.87% | 63.14% | 925 | 479 | 100 | 496 |
+| **9** | `0.000667` | 70.95% | 83.70% | **83.05%** | 50.77% | 63.02% | 924 | 480 | 101 | 495 |
+| **10** | `0.000000` | 71.45% | 83.70% | **83.22%** | 51.29% | 63.47% | 933 | 471 | 100 | 496 |
+| **11** | `0.000000` | 70.85% | 83.55% | **83.05%** | 50.67% | 62.94% | 922 | 482 | 101 | 495 |
+
+### ❖ Decision Tree (Mã: DT-C3 - Ngưỡng cố định: `0.4105`)
+
+| Số đặc trưng | Ngưỡng MI tối thiểu | Accuracy | AUC-ROC | Recall (Lớp 1) | Precision (Lớp 1) | F1-Score (Lớp 1) | TN | FP | FN | TP |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **5** | `0.031333` | 71.65% | 82.68% | **81.21%** | 51.54% | 63.06% | 949 | 455 | 112 | 484 |
+| **6** | `0.010566` | 71.75% | 83.32% | **79.53%** | 51.69% | 62.66% | 961 | 443 | 122 | 474 |
+| **7** | `0.004845` | 71.75% | 83.25% | **79.36%** | 51.69% | 62.61% | 962 | 442 | 123 | 473 |
+| **8** | `0.004795` | 71.30% | 83.28% | **81.71%** | 51.16% | 62.92% | 939 | 465 | 109 | 487 |
+| **9** | `0.000667` | 70.80% | 83.54% | **82.55%** | 50.62% | 62.76% | 924 | 480 | 104 | 492 |
+| **10** | `0.000000` | 70.80% | 83.51% | **82.38%** | 50.62% | 62.71% | 925 | 479 | 105 | 491 |
+| **11** | `0.000000` | 70.80% | 83.51% | **82.38%** | 50.62% | 62.71% | 925 | 479 | 105 | 491 |
+
+---
 
 ## 📊 2. CHI TIẾT TOÀN BỘ CẤU HÌNH QUA CÁC TỶ LỆ SMOTE KHÁC NHAU
 

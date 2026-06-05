@@ -48,6 +48,7 @@ function setupTableChartSync() {
         if (!window.algoChartInstance) return;
 
         const rows = tbody.querySelectorAll('tr');
+        const accuracies = [];
         const recalls = [];
         const precisions = [];
         const f1s = [];
@@ -56,17 +57,19 @@ function setupTableChartSync() {
 
         rows.forEach(row => {
             const cells = row.querySelectorAll('td');
-            if (cells.length >= 5) {
+            if (cells.length >= 6) {
                 // Get algorithm label
                 const label = cells[0].textContent.trim().replace(/\s+/g, '\n');
                 labels.push(label);
 
-                // Parse metrics
-                const recall = parseFloat(cells[1].textContent.replace('%', '')) || 0;
-                const precision = parseFloat(cells[2].textContent.replace('%', '')) || 0;
-                const f1 = parseFloat(cells[3].textContent.replace('%', '')) || 0;
-                const auc = parseFloat(cells[4].textContent.replace('%', '')) || 0;
+                // Parse metrics (now with Accuracy as first metric)
+                const accuracy = parseFloat(cells[1].textContent.replace('%', '')) || 0;
+                const recall = parseFloat(cells[2].textContent.replace('%', '')) || 0;
+                const precision = parseFloat(cells[3].textContent.replace('%', '')) || 0;
+                const f1 = parseFloat(cells[4].textContent.replace('%', '')) || 0;
+                const auc = parseFloat(cells[5].textContent.replace('%', '')) || 0;
 
+                accuracies.push(accuracy);
                 recalls.push(recall);
                 precisions.push(precision);
                 f1s.push(f1);
@@ -76,10 +79,11 @@ function setupTableChartSync() {
 
         // Update Chart data and labels
         window.algoChartInstance.data.labels = labels;
-        window.algoChartInstance.data.datasets[0].data = recalls;
-        window.algoChartInstance.data.datasets[1].data = precisions;
-        window.algoChartInstance.data.datasets[2].data = f1s;
-        window.algoChartInstance.data.datasets[3].data = aucs;
+        window.algoChartInstance.data.datasets[0].data = accuracies;
+        window.algoChartInstance.data.datasets[1].data = recalls;
+        window.algoChartInstance.data.datasets[2].data = precisions;
+        window.algoChartInstance.data.datasets[3].data = f1s;
+        window.algoChartInstance.data.datasets[4].data = aucs;
         
         // Redraw
         window.algoChartInstance.update();
@@ -112,44 +116,54 @@ function createAlgorithmChart() {
             labels: labels,
             datasets: [
                 {
+                    label: 'Accuracy (%)',
+                    data: [73.90, 70.05, 71.05, 70.85, 70.80],
+                    backgroundColor: 'rgba(52, 152, 219, 0.85)',
+                    borderColor: '#3498db',
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    barPercentage: 0.90,
+                    categoryPercentage: 0.92,
+                },
+                {
                     label: 'Recall (%)',
-                    data: [82.55, 86.07, 79.03, 82.55, 81.21],
-                    backgroundColor: 'rgba(0, 121, 107, 0.8)',
+                    data: [81.04, 85.57, 84.06, 83.05, 82.38],
+                    backgroundColor: 'rgba(0, 121, 107, 0.85)',
                     borderColor: '#00796b',
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    barPercentage: 0.75,
-                    categoryPercentage: 0.8,
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    barPercentage: 0.90,
+                    categoryPercentage: 0.92,
                 },
                 {
                     label: 'Precision (%)',
-                    data: [53.95, 49.85, 52.74, 49.85, 51.54],
-                    backgroundColor: 'rgba(231, 76, 60, 0.75)',
+                    data: [54.15, 49.85, 50.86, 50.67, 50.62],
+                    backgroundColor: 'rgba(231, 76, 60, 0.8)',
                     borderColor: '#e74c3c',
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    barPercentage: 0.75,
-                    categoryPercentage: 0.8,
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    barPercentage: 0.90,
+                    categoryPercentage: 0.92,
                 },
                 {
                     label: 'F1-Score (%)',
-                    data: [65.25, 63.14, 63.26, 62.16, 63.06],
-                    backgroundColor: 'rgba(243, 156, 18, 0.8)',
+                    data: [64.92, 63.00, 63.38, 62.94, 62.71],
+                    backgroundColor: 'rgba(243, 156, 18, 0.85)',
                     borderColor: '#f39c12',
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    barPercentage: 0.75,
-                    categoryPercentage: 0.8,
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    barPercentage: 0.90,
+                    categoryPercentage: 0.92,
                 },
                 {
                     label: 'AUC-ROC (%)',
-                    data: [84.63, 83.98, 82.77, 83.17, 82.68],
-                    backgroundColor: 'rgba(142, 68, 173, 0.8)',
+                    data: [85.07, 84.64, 84.50, 83.55, 83.51],
+                    backgroundColor: 'rgba(142, 68, 173, 0.85)',
                     borderColor: '#8e44ad',
-                    borderWidth: 1,
-                    borderRadius: 4,
-                    barPercentage: 0.75,
-                    categoryPercentage: 0.8,
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    barPercentage: 0.90,
+                    categoryPercentage: 0.92,
                 }
             ]
         },
@@ -165,7 +179,7 @@ function createAlgorithmChart() {
             plugins: {
                 title: {
                     display: false,
-                    text: 'So sánh Hiệu năng 5 Thuật toán trên Test Set (Bộ 5 đặc trưng MI - Ngưỡng cố định)',
+                    text: 'So sánh Hiệu năng 5 Thuật toán trên Test Set (Bộ đầy đủ 11 đặc trưng - SMOTE = 0.5)',
                     font: { size: 13, weight: 'bold', family: 'Inter' },
                     color: '#1a237e',
                     padding: { bottom: 10 }
@@ -221,8 +235,8 @@ function createAlgorithmChart() {
                 ctx.save();
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
-                ctx.font = '500 7px Inter';
-                ctx.fillStyle = '#555555';
+                ctx.font = '600 9px Inter';
+                ctx.fillStyle = '#333333';
                 
                 chart.data.datasets.forEach((dataset, datasetIndex) => {
                     const meta = chart.getDatasetMeta(datasetIndex);
