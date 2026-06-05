@@ -1,6 +1,6 @@
 # BÁO CÁO TỔNG HỢP THỰC NGHIỆM CÁC MỐC TỶ LỆ SMOTE
 
-- **Ngày thực hiện**: 2026-06-05 01:39:07
+- **Ngày thực hiện**: 2026-06-05 08:35:35
 - **Tập dữ liệu**: `data_processed.csv`
 - **Chiến lược chia**: Train 70%, Validation 10%, Test 20% (Random State = 42, Stratified).
 - **Ngưỡng quyết định**: Chọn lựa ngưỡng trên tập Validation theo mục tiêu tối ưu hóa Recall nhãn 1 (Stroke=1) đạt >= 83% hoặc tối ưu điểm F1 nếu không đạt.
